@@ -4,7 +4,7 @@ import Book from "../Model/Book.js"
 export const Getallbooks = async (req, res) => {
     try {
         const allBooks = await Book.find({})
-        res.status(200).json({ message: "All books retrieved", booklist: allBooks })
+        res.status(200).json({ message: "All books retrieved", books: allBooks })
     } catch (error) {
         res.status(500).json({ message: "Error retrieving books", error: error.message })
     }
@@ -37,7 +37,7 @@ export const updatebooks = async (req, res) => {
         if (!updatedBook) {
             return res.status(404).json({ message: "Book not found" })
         }
-        res.status(200).json({ message: "Book updated", book: updatedBook })
+        res.status(200).json({ message: "Book updated", updatedbook: updatedBook })
     } catch (error) {
         res.status(500).json({ message: "Error updating book", error: error.message })
     }
@@ -51,7 +51,7 @@ export const deletebook = async (req, res) => {
         if (!deletedBook) {
             return res.status(404).json({ message: "Book not found" })
         }
-        res.status(200).json({ message: "Book deleted", book: deletedBook })
+        res.status(200).json({ message: "Book deleted", deletedbook: deletedBook })
     } catch (error) {
         res.status(500).json({ message: "Error deleting book", error: error.message })
     }
